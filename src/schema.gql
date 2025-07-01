@@ -1,0 +1,77 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type User {
+  id: Int!
+  name: String!
+  email: String!
+}
+
+type CalculatorResult {
+  value: Float!
+  name: String!
+  length: Float!
+}
+
+type NameLengthInfo {
+  name: String!
+  length: Float!
+}
+
+type ShortNameLengthInfo {
+  name: String!
+  length: Float!
+}
+
+type Post {
+  id: Int!
+  caption: String!
+  imageUrl: String!
+  author: String!
+  createdAt: DateTime!
+}
+
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
+
+type Like {
+  postId: Int!
+  user: String!
+  createdAt: String!
+}
+
+type Comment {
+  postId: Int!
+  user: String!
+  text: String!
+  createdAt: String!
+}
+
+type Query {
+  getUsers: [User!]!
+  getUser(id: Float!): User
+  multiplyNameLengthByTotalUsers(userId: Int!): CalculatorResult!
+  longestName: NameLengthInfo!
+  shortestName: ShortNameLengthInfo!
+  averageNameLength: Float!
+  usersWithNameLongerThan(minLength: Int!): [NameLengthInfo!]!
+  getAllPosts: [Post!]!
+  getPostById(id: Int!): Post!
+  getAllComments: [Comment!]!
+  getAllLikes: [Like!]!
+}
+
+type Mutation {
+  createUser(input: CreateUserInput!): User!
+  createPost(caption: String!, imageUrl: String!, author: String!): Post!
+  addComment(postId: Int!, user: String!, text: String!): Comment!
+  addLike(postId: Int!, user: String!): Like!
+}
+
+input CreateUserInput {
+  name: String!
+  email: String!
+}
