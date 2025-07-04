@@ -50,6 +50,13 @@ type Comment {
   createdAt: String!
 }
 
+type Story {
+  id: ID!
+  imageUrl: String!
+  author: String!
+  createdAt: DateTime!
+}
+
 type Query {
   getUsers: [User!]!
   getUser(id: Float!): User
@@ -62,6 +69,8 @@ type Query {
   getPostById(id: Int!): Post!
   getAllComments: [Comment!]!
   getAllLikes: [Like!]!
+  getAllStories: [Story!]!
+  getStoryById(id: String!): Story!
 }
 
 type Mutation {
@@ -69,9 +78,15 @@ type Mutation {
   createPost(caption: String!, imageUrl: String!, author: String!): Post!
   addComment(postId: Int!, user: String!, text: String!): Comment!
   addLike(postId: Int!, user: String!): Like!
+  createStory(input: CreateStoryInput!): Story!
 }
 
 input CreateUserInput {
   name: String!
   email: String!
+}
+
+input CreateStoryInput {
+  imageUrl: String!
+  author: String!
 }

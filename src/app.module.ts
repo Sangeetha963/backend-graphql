@@ -6,6 +6,7 @@ import { UserModule } from './user/user.module';
 import { CalculatorModule } from './calculator/calculator.module';
 import { SocialModule } from './social/social.module';
 import { PostInteractionsModule } from './post-interactions/post-interactions.module';
+import { StoryModule } from './story/story.module';
 
 @Module({
   imports: [
@@ -17,6 +18,7 @@ import { PostInteractionsModule } from './post-interactions/post-interactions.mo
     CalculatorModule,
     SocialModule,
     PostInteractionsModule,
+    StoryModule,
   ],
 })
 export class AppModule {}
